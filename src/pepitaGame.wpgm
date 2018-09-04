@@ -2,6 +2,7 @@ import pepita.*
 import ciudades.*
 import comidas.*
 import wollok.game.*
+import roque.*
 
 program PepitaGame {
 	
@@ -16,11 +17,16 @@ program PepitaGame {
 	game.addVisualIn(manzana, game.at(5,1))
 	game.addVisual(buenosAires)
 	game.addVisual(villaGesell)
-	game.addVisualCharacter(pepita)
+	game.addVisualIn(pepita,game.at(8,3))
+	game.addVisualCharacter(roque)
+	game.whenCollideDo(roque,{algo => algo.teEncintro(roque)})
 
 //	TECLADO
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
 	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
+	//keyboard.a()onpressDo{pepita.come(alpiste) game.removeVisual(alpiste)}
+
+	
 		
 //	START
 	game.start()
